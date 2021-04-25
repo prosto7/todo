@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Todo-list</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,100;1,300&display=swap');
+    </style>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0ff;
+            font-family: Roboto;
+            font-style: normal;
+        }
+
+
+        #page {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            width: 500px;
+            background-color: #fafafa;
+            padding: 0px;
+            box-shadow: 0 20px 30px 0 rgba(1, 1, 1, 0.07);
+            margin: 6rem 0;
+            border-radius: 0.75rem;
+
+        }
+
+
+        h1 {
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+
+        #page>h2 {
+            padding-left: 20px;
+        }
+
+        #header {
+            margin: 0 auto;
+            color: #35242F;
+
+
+
+        }
+
+        #itemDescription {
+
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+            font-size: 1.5rem;
+            padding-left: 20px;
+            background: transparent;
+            width: calc(100% - 3rem - 5px);
+            border: none;
+            width: calc(100% - 3rem - 175px);
+
+
+        }
+
+        input {
+            margin: 0 20px 20px 20px;
+
+        }
+
+
+        #add {
+            background-color: #D0D5EE;
+            border-radius: 0.75rem;
+            border: none;
+            font: 'Roboto';
+            font-size: 1.25em;
+            font-weight: bolder;
+            width: 150px;
+            height: 50px;
+            text-transform: uppercase;
+            margin-left: 20px;
+
+
+
+        }
+
+
+        #ul>li {
+            border-bottom: 1px solid black;
+            width: 150px;
+            font-family: 'Roboto', sans-serif;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        #ula>li:hover {
+            background: #F7FDF1;
+            transform: scale(0.95);
+
+
+        }
+
+        #ula {
+            list-style-type: none;
+            padding: 30px;
+        }
+
+        #ula li {
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 20px 30px 0 rgba(1, 1, 1, 0.07);
+            border-radius: 0.75rem;
+            color: #0d0d0d;
+            padding: 1.25rem;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: .03rem;
+            animation: fadeIn .5s linear;
+            background-color: #fff;
+            margin-bottom: 5px;
+            position: relative;
+            border-right: 0px solid lightgray;
+            letter-spacing: -.015rem;
+            will-change: transform;
+            margin: 5px;
+        }
+
+        #ula li:hover .delete {
+            right: -37px;
+            color: white;
+        }
+
+        #ula li .delete {
+            transition: all 0.30s ease-in-out;
+            position: absolute;
+            color: transparent;
+            background: none;
+            border: none;
+            outline: 0;
+            line-height: .85rem;
+            font-size: 1rem;
+        }
+
+        #ula li .delete:hover {
+            opacity: .75;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                margin-top: -50px;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+                margin-top: 0px;
+            }
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+                margin-top: 0px;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+                margin-top: -50px;
+            }
+        }
+
+        #ula li:hover {
+            border-right: 55px solid #F02230;
+            transition: all 0.3s ease-in-out;
+            transform: scale(1.05);
+            z-index: 20;
+            box-shadow: 0 20px 30px 0 rgba(1, 1, 1, 0.2);
+        }
+
+        #flex {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #basket {
+            background-color: #eef093;
+            width: inherit;
+            height: 75px;
+            border: solid 1px rgb(199, 133, 133);
+        }
+
+        #basket img {
+            width: 35px;
+            height: 35px;
+            float: center;
+            margin-top: 25px;
+        }
+
+        #deleteAll {
+            float: right;
+            height: inherit;
+        }
+
+        #float {
+            float: left;
+            width: 200px;
+            height: inherit;
+            /* background-color: rgba(1, 1, 1, 0.07); */
+        }
+
+        #basket .deleted {
+            background-color: red;
+        }
+
+        .del {
+            opacity: 0.5;
+            background-color: lightcoral !important;
+
+
+        }
+
+        #trash {
+
+            font-weight: 700;
+            color: black;
+            text-decoration: none;
+            margin-left: 10px;
+            border-radius: 3px;
+            background: rgb(215, 220, 230);
+            border: 1px solid;
+        }
+
+        #basket p {
+            margin-left: 10px;
+
+        }
+    </style>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js">
+    </script>
+</head>
+
+<body>
+    <div id="page">
+        <h1 id="header">Список покупок</h1>
+        <h2>В списке: <span id="counter"></span><span id="goods"></span></h2>
+        <ul id="ula">
+
+        </ul>
+        <div id="flex">
+            <input type="text" id="itemDescription" placeholder="Введите имя товара">
+            <input type="submit" id="add" value="Добавить">
+        </div>
+        <div id="basket">
+            <div id="float">
+                <p> Корзина пуста</p>
+                <button id="trash">Очистить</button>
+            </div>
+            <img src="full-trash.png" alt="">
+
+            <button id="deleteAll">Удалить все</button>
+
+        </div>
+    </div>
+
+    <script src="todo.js"></script>
+
+    <script src="dz_drag_drop_todo.js"></script>
+</body>
+
+</html>
